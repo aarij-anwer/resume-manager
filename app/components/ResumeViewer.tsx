@@ -17,10 +17,12 @@ const ResumeViewer: React.FC = () => {
 
   // Convert HTML to PDF and download
   const downloadPDF = () => {
-    const pdf = new jsPDF();
-    const content = document.getElementById('markdown-output')?.innerText || '';
-    pdf.text(content, 10, 10);
-    pdf.save('resume.pdf');
+    if (typeof window !== 'undefined') {
+      const pdf = new jsPDF();
+      const content = document.getElementById('markdown-output')?.innerText || '';
+      pdf.text(content, 10, 10);
+      pdf.save('resume.pdf');
+    }
   };
 
   return (
