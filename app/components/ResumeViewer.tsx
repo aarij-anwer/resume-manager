@@ -4,22 +4,18 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-// Import jsPDF dynamically to avoid SSR issues
-import { jsPDF } from 'jspdf';
-
 const ResumeViewer: React.FC = () => {
   const [markdown, setMarkdown] = useState<string>('');
 
-  // Fetch the markdown file
   useEffect(() => {
     fetch('/resume.md')
       .then((res) => res.text())
       .then((text) => setMarkdown(text));
   }, []);
 
-  // Convert HTML to PDF and download
-  const downloadPDF = () => {
+  const downloadPDF = async () => {
     if (typeof window !== 'undefined') {
+      const jsPDF = (await import('jspdf')).default;
       const pdf = new jsPDF();
       const content = document.getElementById('markdown-output')?.innerText || '';
       pdf.text(content, 10, 10);
