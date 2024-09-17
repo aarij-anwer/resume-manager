@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import jsPDF from 'jspdf';
+
+// Import jsPDF dynamically to avoid SSR issues
+import { jsPDF } from 'jspdf';
 
 const ResumeViewer: React.FC = () => {
   const [markdown, setMarkdown] = useState<string>('');

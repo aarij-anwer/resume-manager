@@ -1,4 +1,4 @@
-# **Aarij Anwer**  
+# **Muhammad Anwer**  
 **Full Stack Engineer | Product Manager | Strategic Leader**
 
 ---
